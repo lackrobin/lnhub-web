@@ -33,7 +33,7 @@
 		{/each}
 	</ul>
 </div>
-<div class="p-2 gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+<div class="p-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
 	{#each services.services as data}
 		<ContentCard {data} />
 	{/each}
