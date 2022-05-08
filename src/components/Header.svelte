@@ -59,7 +59,7 @@
 			</div>
 		</div>
 		<div class="navbar-center">
-			<a class="pl-1 btn btn-ghost normal-case text-xl" href="/">
+			<a class="pl-1 btn btn-ghost normal-case text-xl hover:text-[#f5d018]" href="/">
 				<div class="h-10 w-10">
 					<Lottie lottiePath="/animations/lightning.json" />
 				</div>
