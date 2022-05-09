@@ -1,9 +1,12 @@
 <script>
+import { onMount } from 'svelte';
+
 	import CategoryDropdown from './CategoryDropdown.svelte';
 	import ContentCard from './ContentCard.svelte';
 
 	export let services;
 	export let categories;
+    
 	let filteredServices = [...services.services];
 	let search;
 
@@ -32,6 +35,7 @@
 	</div>
 </div>
 <div class="p-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+    <div class="hidden">{filteredServices}</div>
 	{#each filteredServices as data}
 		<ContentCard {data} />
 	{/each}
