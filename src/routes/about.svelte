@@ -9,4 +9,9 @@
 <div>
     <img class="h-10" src="donate-with-white.svg" alt="donate">
 </div>
+<div>
+    <p>
+        If you want to contribute to the project, please open a pull request on <a class="link link-primary" href="https://github.com/lackrobin/lnhub-web">GitHub</a>.
+    </p>
+</div>
 </div>
