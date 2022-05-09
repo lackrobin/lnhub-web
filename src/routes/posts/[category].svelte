@@ -25,4 +25,4 @@
 	export let categories;
 </script>
 
-<ContentCardList {services }{categories}></ContentCardList>
+<ContentCardList {services} {categories} />

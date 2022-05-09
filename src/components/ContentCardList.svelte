@@ -1,5 +1,5 @@
 <script>
-import { onMount } from 'svelte';
+import { afterUpdate, beforeUpdate } from 'svelte';
 
 	import CategoryDropdown from './CategoryDropdown.svelte';
 	import ContentCard from './ContentCard.svelte';
@@ -20,6 +20,10 @@ import { onMount } from 'svelte';
 			}
 		});
 	};
+    
+    afterUpdate(() => {
+        updateSearch()
+});
 </script>
 
 <div class="flex m-4 justify-between gap-2">
@@ -35,7 +39,6 @@ import { onMount } from 'svelte';
 	</div>
 </div>
 <div class="p-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-    <div class="hidden">{filteredServices}</div>
 	{#each filteredServices as data}
 		<ContentCard {data} />
 	{/each}

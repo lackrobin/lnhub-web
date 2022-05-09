@@ -1,6 +1,5 @@
 import { client } from "$lib/graphql-client";
 import { gql } from "graphql-request";
-import { Readable } from "stream";
 
 export const get = async () => {
 

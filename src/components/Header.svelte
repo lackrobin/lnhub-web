@@ -37,13 +37,6 @@
 					<li>
 						<a
 							sveltekit:prefetch
-							class={$page.url.pathname.includes('posts') ? 'text-teal-700' : ''}
-							href="/posts">LN Services</a
-						>
-					</li>
-					<li>
-						<a
-							sveltekit:prefetch
 							class={$page.url.pathname.includes('about') ? 'text-teal-700' : ''}
 							href="/about">About</a
 						>
