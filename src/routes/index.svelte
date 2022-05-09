@@ -30,7 +30,7 @@
 <div class="flex flex-col justify-center items-center p-2">
 	<h1 class="font-bold text-2xl">Welcome</h1>
 	<div class="flex">
-		<p>LNHub.info is a currator of Tools, Services, Apps and more that are built with the Lightning Network</p>
+		<p>Find Tools, Services and Apps that are built using the Lightning Network</p>
 		<div class="w-6 h-6"><Lottie lottiePath="/animations/lightning.json" /></div>
 	</div>
 	<!-- <p>
