@@ -1,6 +1,6 @@
-# LNHub.info Web
+# [LNHub.info](lnhub.info) Web
 
-Website for LNHub.info
+Website for [LNHub.info](lnhub.info)
 ## Develop
 
 ```bash
