@@ -1,6 +1,6 @@
-# LNHub Web
+# LNHub.info Web
 
-Website for LNHub
+Website for LNHub.info
 ## Develop
 
 ```bash
