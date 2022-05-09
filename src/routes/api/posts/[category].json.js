@@ -3,7 +3,6 @@ import { gql } from "graphql-request";
 export const get = async (req) => {
   const category = req.params.category
   const variables = {category} 
-  console.log(variables)
   try {
     const { services } = await client.request(
       gql`query getServices($category: String!){
