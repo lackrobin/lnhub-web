@@ -41,13 +41,15 @@
 							href="/about">About</a
 						>
 					</li>
-					<!-- <li>
-						<a
-							sveltekit:prefetch
-							class={$page.url.pathname.includes('proposal') ? 'text-teal-700' : ''}
-							href="/proposal">Add new</a
-						>
-					</li> -->
+					{#if user}
+						<li>
+							<a
+								sveltekit:prefetch
+								class={$page.url.pathname.includes('proposal') ? 'text-teal-700' : ''}
+								href="/add/proposal">+Add new</a
+							>
+						</li>
+					{/if}
 				</ul>
 			</div>
 		</div>
@@ -61,10 +63,10 @@
 		</div>
 		<div class="navbar-end">
 			{#if user}
-			<div class="flex gap-2">
-				<a href="/user">{user}</a>
-				<a href="/api/logout" class="link link-primary">logout</a>
-			</div>
+				<div class="flex gap-2">
+					<a href="/user">{user}</a>
+					<a href="/api/logout" class="link link-primary">logout</a>
+				</div>
 			{:else}
 				<a href="/api/login" class="link link-primary">login</a>
 			{/if}

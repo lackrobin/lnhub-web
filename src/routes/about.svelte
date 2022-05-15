@@ -11,7 +11,7 @@
 </div>
 <div>
     <p>
-        If you want to contribute to the project, please open a pull request on <a class="link link-primary" href="https://github.com/lackrobin/lnhub-web">GitHub</a>.
+        If you want to contribute to the project, please open a pull request on <a class="link link-primary" href="https://github.com/lackrobin/lnhub-web">GitHub</a>, or <a href="/api/login" class="link link-primary">login</a> to add missing services.
     </p>
 </div>
 </div>

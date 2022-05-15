@@ -1,5 +1,5 @@
 <script context="module">
-	export const load = async ({ fetch }) => {
+	export const load = async ({ fetch, session }) => {
 		const resPosts = await fetch('/api/posts.json');
 		const resCategories = await fetch('/api/categories.json');
 		if (resPosts.ok && resCategories.ok) {
@@ -9,6 +9,7 @@
 				props: {
 					services,
 					categories,
+					user: session.user
 				},
 				cache: {
 					maxage: 300,
@@ -25,6 +26,7 @@
 
 	export let services;
 	export let categories;
+	export let user;
 </script>
 
 <div class="flex flex-col justify-center items-center p-2">
@@ -33,9 +35,11 @@
 		<p>Find Tools, Services and Apps that are built using the Lightning Network</p>
 		<div class="w-6 h-6"><Lottie lottiePath="/animations/lightning.json" /></div>
 	</div>
-	<!-- <p>
-		You can help me list more services <a href="/proposal">Add a Listing</a>
-	</p> -->
+	{#if user}
+	<p>
+		You can help me list more services by <a href="/add/proposal" class="link link-primary">adding a Listing</a>.
+	</p>
+	{/if}
 </div>
 
 <ContentCardList {services} {categories}></ContentCardList>
