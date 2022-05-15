@@ -1,4 +1,5 @@
 <script>
+	import Lottie from './Lottie.svelte';
 	export let data;
 </script>
 
@@ -11,12 +12,22 @@
 			<a href={data.externalUrl} class="link link-primary">{data.title}</a>
 		</h2>
 		<p>{data.abstract}</p>
-		<div class="card-actions justify-end">
-			{#each data.categories as category}
-				<div class="badge badge-outline">
-					{category.name}
+		<div class="flex justify-between">
+			<div class="card-actions justify-end">
+				{#each data.categories as category}
+					<div class="badge badge-outline">
+						{category.name}
+					</div>
+				{/each}
+			</div>
+			<!-- <div class="flex">
+				<div class="h-8 w-8">
+					<Lottie lottiePath="/animations/heart.json" />
 				</div>
-			{/each}
+				<div class="h-8 w-8">
+					<Lottie lottiePath="/animations/lightning.json" />
+				</div>
+			</div> -->
 		</div>
 	</div>
 </div>

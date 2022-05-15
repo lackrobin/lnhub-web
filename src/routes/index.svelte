@@ -8,7 +8,7 @@
 			return {
 				props: {
 					services,
-					categories
+					categories,
 				},
 				cache: {
 					maxage: 300,

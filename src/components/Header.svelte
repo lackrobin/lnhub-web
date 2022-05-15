@@ -1,7 +1,7 @@
 <script>
 	import Lottie from '../components/Lottie.svelte';
 	import { page } from '$app/stores';
-
+	export let user;
 	let title = 'LNHub';
 </script>
 
@@ -60,7 +60,14 @@
 			</a>
 		</div>
 		<div class="navbar-end">
-
-		  </div>
+			{#if user}
+			<div class="flex gap-2">
+				<a href="/user">{user}</a>
+				<a href="/api/logout" class="link link-primary">logout</a>
+			</div>
+			{:else}
+				<a href="/api/login" class="link link-primary">login</a>
+			{/if}
+		</div>
 	</div>
 </header>

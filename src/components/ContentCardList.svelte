@@ -1,14 +1,14 @@
 <script>
-import { afterUpdate, beforeUpdate } from 'svelte';
+	import { afterUpdate, beforeUpdate, onMount } from 'svelte';
 
 	import CategoryDropdown from './CategoryDropdown.svelte';
 	import ContentCard from './ContentCard.svelte';
 
 	export let services;
 	export let categories;
-    
+
 	let filteredServices = [...services.services];
-	let search;
+	let search ='';
 
 	const updateSearch = () => {
 		filteredServices = [...services.services];
@@ -20,10 +20,10 @@ import { afterUpdate, beforeUpdate } from 'svelte';
 			}
 		});
 	};
-    
-    afterUpdate(() => {
-        updateSearch()
-});
+
+	afterUpdate(() => {
+		 updateSearch();
+	});
 </script>
 
 <div class="flex m-4 justify-between gap-2">
