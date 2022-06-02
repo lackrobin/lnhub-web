@@ -1,28 +1,15 @@
-import { client } from "$lib/graphql-client";
-import { gql } from "graphql-request";
+import { client, query as q } from "$lib/fauna-client";
 export const get = async (req) => {
   const category = req.params.category
-  const variables = {category} 
   try {
-    const { services } = await client.request(
-      gql`query getServices($category: String!){
-            services (where: {categories_every: {name_in: [$category]}}) {
-              title
-              abstract
-              externalUrl
-              logo {
-                url
-              }
-              categories{
-                name
-              }
-            }
-          }
-          `, variables
+    const services = await client.query(q.Map(
+      q.Paginate(q.Match(q.Index("services_by_category"), category)),
+      q.Lambda("X", q.Get(q.Var("X"))))
     )
+    
     return {
       status: 200,
-      body: {services} 
+      body: { services }
     }
   } catch (error) {
     console.log(error)

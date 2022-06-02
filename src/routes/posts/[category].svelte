@@ -7,8 +7,8 @@
 			const categories = await resCategories.json();
 			return {
 				props: {
-					services,
-					categories
+					services: services.services.data,
+					categories: categories.categories.data
 				},
 				cache: {
 					maxage: 300,
@@ -23,6 +23,8 @@
 	import ContentCardList from '../../components/ContentCardList.svelte';
 	export let services;
 	export let categories;
+
+	console.log(services)
 </script>
 
 <ContentCardList {services} {categories} />

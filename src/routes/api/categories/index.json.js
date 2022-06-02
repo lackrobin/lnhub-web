@@ -1,15 +1,9 @@
-import { client } from "$lib/graphql-client";
-import { gql } from "graphql-request";
+import { client, query as q } from "$lib/fauna-client";
 export const get = async () => {
 
     try {
-        const query = gql`{
-            categories {
-              name
-            }
-          }
-          `
-        const { categories } = await client.request(query)
+        const categories = await client.query(q.Distinct(q.Paginate(q.Match(q.Index("categories")))))
+
         return {
             status: 200,
             body: { categories }

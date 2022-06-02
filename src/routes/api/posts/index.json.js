@@ -1,24 +1,9 @@
-import { client } from "$lib/graphql-client";
-import { gql } from "graphql-request";
+import { client, query as q } from "$lib/fauna-client";
 
 export const get = async () => {
 
     try {
-        const query = gql`{
-            services {
-              title
-              abstract
-              externalUrl
-              logo {
-                url
-              }
-              categories {
-                name
-              }
-            }
-          }
-          `
-        const { services } = await client.request(query)
+        const services = await client.query(q.Map(q.Paginate(q.Documents(q.Collection('services'))), q.Lambda("X", q.Get(q.Var("X")))))
         return {
             status: 200,
             body: { services }
@@ -28,20 +13,20 @@ export const get = async () => {
     }
 }
 
-export const post = async ( {request} ) => {
+export const post = async ({ request }) => {
     try {
         const data = await request.formData()
         const logoUrl = data.get("logo")
         let response = await fetch(`${process.env.GRAPHQL_ENDPOINT}/upload`, {
-			method: 'POST',
-			headers: {
-				Authorization: `Bearer ${process.env.GRAPHCMS_ASSET_TOKEN}`,
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${process.env.GRAPHCMS_ASSET_TOKEN}`,
                 'Content-Type': 'application/x-www-form-urlencoded'
-			},
+            },
             body: `url=${encodeURIComponent(
                 logoUrl
-              )}`,
-		});
+            )}`,
+        });
         let assetMeta = await response.json()
 
         let newService = {
@@ -53,7 +38,7 @@ export const post = async ( {request} ) => {
             },
             categories: [{ name: data.get("category") }]
         };
-    
+
         return {
             status: 201
         }

@@ -7,7 +7,7 @@
     export let isLoop = false;
     let lottieLogo;
     
-    let isLottiePlayed = false;
+    let isLottiePlayed = false + isAutoplay;
     let lottieID = lottiePath.split("/").pop().replace("\.","-")+"lottie"+Math.random().toString(16).substring(2, 8);
     onMount(() => {
       lottieLogo = lottie.loadAnimation({
@@ -16,6 +16,7 @@
         loop: isLoop,
         autoplay: isAutoplay,
         path: lottiePath,
+        
       });
     });
   

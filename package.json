@@ -21,6 +21,7 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-svelte3": "^3.2.1",
+    "faunadb": "^4.5.4",
     "graphql": "^16.4.0",
     "graphql-request": "^4.2.0",
     "lottie-web": "^5.9.4",
@@ -31,10 +32,16 @@
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.6",
     "tailwindcss": "^3.0.24",
-    "typescript": "~4.6.2"
+    "typescript": "~4.6.2",
+    "@sveltejs/adapter-node": "^1.0.0-next.76"
+
   },
   "type": "module",
   "dependencies": {
-    "cookie": "^0.5.0"
+    "cookie": "^0.5.0",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "passport": "^0.6.0",
+    "passport-lnurl-auth": "^1.5.0"
   }
 }

@@ -7,15 +7,15 @@
 	export let services;
 	export let categories;
 
-	let filteredServices = [...services.services];
+	let filteredServices = [...services];
 	let search ='';
 
 	const updateSearch = () => {
-		filteredServices = [...services.services];
+		filteredServices = [...services];
 		filteredServices = filteredServices.filter((service) => {
-			if (service.title.toLowerCase().includes(search.toLowerCase())) {
+			if (service.data.title.toLowerCase().includes(search.toLowerCase())) {
 				return true;
-			} else if (service.abstract.toLowerCase().includes(search.toLowerCase())) {
+			} else if (service.data.abstract.toLowerCase().includes(search.toLowerCase())) {
 				return true;
 			}
 		});
@@ -40,6 +40,6 @@
 </div>
 <div class="p-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
 	{#each filteredServices as data}
-		<ContentCard {data} />
+		<ContentCard data={data.data} />
 	{/each}
 </div>

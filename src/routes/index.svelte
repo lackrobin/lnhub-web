@@ -7,8 +7,8 @@
 			const categories = await resCategories.json();
 			return {
 				props: {
-					services,
-					categories,
+					services: services.services.data,
+					categories: categories.categories.data,
 					user: session.user
 				},
 				cache: {
@@ -27,6 +27,7 @@
 	export let services;
 	export let categories;
 	export let user;
+
 </script>
 
 <div class="flex flex-col justify-center items-center p-2">
