@@ -65,10 +65,10 @@
 			{#if user}
 				<div class="flex gap-2">
 					<a href="/user">{user}</a>
-					<a href="/api/logout" class="link link-primary">logout</a>
+					<a href="/logout" class="link link-primary">logout</a>
 				</div>
 			{:else}
-				<a href="/api/login" class="link link-primary">login</a>
+				<a href="/login" class="link link-primary">login</a>
 			{/if}
 		</div>
 	</div>

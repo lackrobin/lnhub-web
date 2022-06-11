@@ -1,20 +1,24 @@
-const express = require('express');
-const LnurlAuth = require('passport-lnurl-auth');
-const passport = require('passport');
-const session = require('express-session');
 
-import { handler } from './build/handler.js';
+import express from 'express';
+import LnurlAuth from "passport-lnurl-auth"
+import passport from 'passport'
+import session from 'express-session';
+
+import {handler} from './build/handler.js';
 
 const app = express();
+process.on('SIGINT', function () { process.exit(); }); // Ctrl+C  
+process.on('SIGTERM', function () { process.exit(); }); // docker stop
 
 const config = {
-	host: 'localhost',
-	port: 5000,
-	url: null,
+	dockerHost: '0.0.0.0',
+	dockerPort: 3000,
+	dockerUrl: null,
+	host: "https://lnhub.info",
 };
 
-if (!config.url) {
-	config.url = 'http://' + config.host + ':' + config.port;
+if (!config.dockerUrl) {
+	config.dockerUrl = 'http://' + config.dockerHost + ':' + config.dockerPort;
 }
 
 app.use(session({
@@ -59,13 +63,30 @@ app.get('/login',
 		next();
 	}, 
 	new LnurlAuth.Middleware({
-		callbackUrl: config.url + '/login',
-		cancelUrl: config.url
+		callbackUrl: config.host + '/login',
+		cancelUrl: config.host,
+		uriSchemaPrefix: 'LIGHTNING:',
+		loginTemplateFilePath: './login-template.html',
+		refreshSeconds: 5,
+		title: "Login to LNHub with LNURL-Auth",
+		instruction: 'Scan the QR code to login',
 	})
 );
 
-const server = app.listen(config.port, config.host, function() {
-	console.log('Server listening at ' + config.url);
+app.post('/logout', function(req, res){
+	req.logout();
+	res.redirect('/');
+  });
+
+
+app.get("/user",  function(req,res){
+	res.json({user: req.user})
+})
+
+app.use(handler)
+
+const server = app.listen(config.dockerPort, config.dockerHost, function() {
+	console.log('Server listening at ' + config.dockerUrl);
 });
 
 process.on('uncaughtException', error => {

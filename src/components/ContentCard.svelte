@@ -1,14 +1,6 @@
 <script>
-	import Lottie from './Lottie.svelte';
-	import { session } from '$app/stores';
 	export let data;
 
-	// const handleLike = async function () {
-	// 	const type = 'LIKE';
-	// 	const resPosts = await fetch(
-	// 		`/api/posts/like.json?type=${type}&username=${$session.user}&serviceID=${data.id}`
-	// 	);
-	// };
 </script>
 
 <div class="m-2 card max-w-sm h-96 bg-base-200 shadow-xl">
@@ -26,17 +18,6 @@
 						{data.category}
 					</div>
 			</div>
-			<!-- <div class="flex content font-bold text-red-400 items-center">
-				<div class="h-8 w-8" on:click={handleLike}>
-					<Lottie
-						lottiePath="/animations/heart.json"
-						isAutoplay={data.votes.map((e)=> {return e.username}).includes($session.user)}
-					/>
-				</div>
-				<p>
-					{data.votes.length}
-				</p>
-			</div> -->
 		</div>
 	</div>
 </div>
